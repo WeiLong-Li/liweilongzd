@@ -2,27 +2,21 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Document</title>
+	<title>dong</title>
 </head>
-<body>  
+<body> 
+	<button onclick="startVibrate(1000)">1</button>
+	<button onclick="startVibrate([1000, 200, 1000, 2000, 400]);">2</button>
+	<button onclick="startPeristentVibrate(1000, 1500);">3</button>
+	<button onclick="stopVibrate();" >听</button>
 	<script>
-		var vibrateInterval;
-// Starts vibration at passed in level
-function startVibrate(duration) {
-navigator.vibrate(duration);
-}
-// Stops vibration
-function stopVibrate() {
-// Clear interval and stop persistent vibrating
-if(vibrateInterval) clearInterval(vibrateInterval);
-navigator.vibrate(0);
-}
-// Start persistent vibration at given duration and interval
-// Assumes a number value is given
-function startPeristentVibrate(duration, interval) {
-vibrateInterval = setInterval(function() {
-startVibrate(duration);
-}, interval);
-}
+	function startVibrate(level) {            navigator.vibrate(level);        }         
+ 
+var vibrateInterval;        
+ 
+function startPeristentVibrate(level, interval) {            vibrateInterval = setInterval(function() {                startVibrate(level);            }, interval);        }               
+ 
+ function stopVibrate() {            if(vibrateInterval) clearInterval(vibrateInterval);            navigator.vibrate(0);        }
+
 	</script>
 </html>
